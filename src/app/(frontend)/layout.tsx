@@ -19,6 +19,8 @@ export const metadata = {
   description: 'Marimekko app',
 };
 
+export const dynamic = 'force-dynamic';
+
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;
 }>;
