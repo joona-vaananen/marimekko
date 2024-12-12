@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url';
 
 import { Media } from './collections/Media';
 import { Users } from './collections/Users';
-import { IS_PRODUCTION } from './constants';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -33,17 +32,18 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: IS_PRODUCTION
-    ? [
-        gcsStorage({
-          collections: {
-            media: true,
-          },
-          bucket: process.env.APP_GOOGLE_CLOUD_STORAGE_BUCKET!,
-          options: {
-            projectId: process.env.APP_GOOGLE_CLOUD_PROJECT_ID,
-          },
-        }),
-      ]
-    : [],
+  plugins:
+    process.env.NODE_ENV === 'production'
+      ? [
+          gcsStorage({
+            collections: {
+              media: true,
+            },
+            bucket: process.env.APP_GOOGLE_CLOUD_STORAGE_BUCKET!,
+            options: {
+              projectId: process.env.APP_GOOGLE_CLOUD_PROJECT_ID,
+            },
+          }),
+        ]
+      : [],
 });
