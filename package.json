@@ -22,6 +22,7 @@
     "@payloadcms/next": "latest",
     "@payloadcms/richtext-lexical": "latest",
     "@payloadcms/storage-gcs": "latest",
+    "@radix-ui/themes": "latest",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "next": "15.0.4",

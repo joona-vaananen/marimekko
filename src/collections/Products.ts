@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import type { CollectionConfig } from 'payload';
 
 export const Products: CollectionConfig = {
@@ -28,4 +29,11 @@ export const Products: CollectionConfig = {
       hasMany: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidatePath('/');
+      },
+    ],
+  },
 };
