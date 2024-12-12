@@ -28,5 +28,4 @@ export const Products: CollectionConfig = {
       hasMany: true,
     },
   ],
-  upload: true,
 };
