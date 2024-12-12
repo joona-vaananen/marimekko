@@ -1,8 +1,8 @@
 {
   "name": "marimekko",
   "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
-  "license": "MIT",
+  "description": "",
+  "license": "UNLICENSED",
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
@@ -12,7 +12,11 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "build:dev": "docker compose -f docker-compose.development.yml --env-file .env.development build",
+    "up:dev": "docker compose -f docker-compose.development.yml --env-file .env.development up -d",
+    "build:prod": "docker compose -f docker-compose.production.yml --env-file .env.production build",
+    "up:prod": "docker compose -f docker-compose.production.yml --env-file .env.production up -d"
   },
   "dependencies": {
     "@payloadcms/next": "latest",
@@ -36,6 +40,8 @@
     "typescript": "5.7.2"
   },
   "engines": {
-    "node": "^18.20.2 || >=20.9.0"
-  }
+    "node": "22.12.0",
+    "npm": "10.9.0"
+  },
+  "packageManager": "npm@10.9.0"
 }

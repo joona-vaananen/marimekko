@@ -1,8 +1,10 @@
 /** @type {import('eslint').Linter.Config} */
-module.exports = {
+const config = {
   extends: ['next/core-web-vitals'],
   parserOptions: {
     project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
-}
+};
+
+module.exports = config;
