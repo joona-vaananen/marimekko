@@ -16,6 +16,8 @@ const raleway = Raleway({
   variable: '--font-raleway',
 });
 
+export const experimental_ppr = true;
+
 export const metadata = {
   title: 'Marimekko',
   description: 'Marimekko app',

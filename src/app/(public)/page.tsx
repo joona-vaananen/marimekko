@@ -4,7 +4,7 @@ import { ProductList } from '@/components/product-list';
 import { StaticContent } from '@/components/static-content';
 import { Suspense } from 'react';
 
-const HomePage = async () => {
+const HomePage = () => {
   return (
     <Container asChild>
       <main>
