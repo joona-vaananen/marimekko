@@ -8,8 +8,8 @@ import {
 } from '@radix-ui/themes';
 import Image from 'next/image';
 
-import productImage1 from '@/assets/product-image-1.jpg';
-import productImage2 from '@/assets/product-image-2.jpg';
+import secondaryProductImage from '@/assets/jakala-marras-turtleneck-shirt.jpg';
+import primaryProductImage from '@/assets/maija-unikko-blouse.jpg';
 
 export const StaticContent = () => {
   return (
@@ -48,7 +48,7 @@ export const StaticContent = () => {
         >
           <AspectRatio ratio={2 / 3}>
             <Image
-              src={productImage1}
+              src={primaryProductImage}
               alt="Maija Unikko Blouse"
               fill
               sizes="50vw"
@@ -83,7 +83,7 @@ export const StaticContent = () => {
         >
           <AspectRatio ratio={2 / 3}>
             <Image
-              src={productImage2}
+              src={secondaryProductImage}
               alt="Jäkälä Marras Turtleneck Shirt"
               fill
               sizes="50vw"

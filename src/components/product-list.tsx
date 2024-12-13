@@ -1,4 +1,3 @@
-import configPromise from '@payload-config';
 import {
   AspectRatio,
   Card,
@@ -8,29 +7,19 @@ import {
   Section,
   Text,
 } from '@radix-ui/themes';
-import { unstable_cache as cache } from 'next/cache';
 import Image from 'next/image';
-import { getPayload } from 'payload';
 
-import { BREAKPOINTS, LOCALE } from '@/constants';
+import { getCachedProducts } from '@/app/lib/products';
+import { BREAKPOINTS } from '@/constants';
 
 export const ProductList = async () => {
-  const payload = await getPayload({
-    config: configPromise,
-  });
+  const products = await getCachedProducts();
 
-  const products = await cache(
-    () =>
-      payload.find({
-        collection: 'products',
-      }),
-    ['products'],
-    {
-      tags: ['products'],
-    }
-  )();
+  if (products.docs.length === 0) {
+    return null;
+  }
 
-  return products.docs.length > 0 ? (
+  return (
     <Section>
       <Heading as="h2" weight="medium" mb="4">
         Products
@@ -72,15 +61,10 @@ export const ProductList = async () => {
             <Heading as="h3" size="3" weight="medium" mb="2">
               {product.name}
             </Heading>
-            <Text weight={'medium'}>
-              {(product.price / 100).toLocaleString(LOCALE, {
-                style: 'currency',
-                currency: 'EUR',
-              })}
-            </Text>
+            <Text weight={'medium'}>{product.price.formatted}</Text>
           </Card>
         ))}
       </Grid>
     </Section>
-  ) : null;
+  );
 };
