@@ -6,3 +6,5 @@ export const BREAKPOINTS = {
   LG: 1280,
   XL: 1640,
 };
+
+export const LOCALE = 'en';
