@@ -8,6 +8,7 @@ import {
   Section,
   Text,
 } from '@radix-ui/themes';
+import { unstable_cache as cache } from 'next/cache';
 import Image from 'next/image';
 import { getPayload } from 'payload';
 
@@ -18,9 +19,16 @@ export const ProductList = async () => {
     config: configPromise,
   });
 
-  const products = await payload.find({
-    collection: 'products',
-  });
+  const products = await cache(
+    () =>
+      payload.find({
+        collection: 'products',
+      }),
+    ['products'],
+    {
+      tags: ['products'],
+    }
+  )();
 
   return products.docs.length > 0 ? (
     <Section>
