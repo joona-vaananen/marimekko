@@ -9,8 +9,8 @@ import {
 } from '@radix-ui/themes';
 import Image from 'next/image';
 
-import { getCachedProducts } from '@/app/lib/products';
 import { BREAKPOINTS } from '@/constants';
+import { getCachedProducts } from '@/lib/products';
 
 export const ProductList = async () => {
   const products = await getCachedProducts();
