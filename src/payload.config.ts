@@ -7,9 +7,9 @@ import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
-import { Media } from './collections/Media';
-import { Products } from './collections/Products';
-import { Users } from './collections/Users';
+import { Media } from './collections/media';
+import { Products } from './collections/products';
+import { Users } from './collections/users';
 import { migrations } from './migrations';
 
 const filename = fileURLToPath(import.meta.url);
