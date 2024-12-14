@@ -7,8 +7,8 @@ import {
   Section,
   Text,
 } from '@radix-ui/themes';
-import Image from 'next/image';
 
+import { Image } from '@/components/image';
 import { BREAKPOINTS } from '@/constants';
 import { getCachedProducts } from '@/lib/products';
 
@@ -49,7 +49,7 @@ export const ProductList = async ({ locale, ...props }: ProductListProps) => {
                   backgroundColor: 'var(--gray-2)',
                 }}
               >
-                {typeof product.images?.[0] === 'object' ? (
+                {product.images[0] ? (
                   <Image
                     src={product.images[0].url}
                     alt={product.images[0].alt}
@@ -60,7 +60,6 @@ export const ProductList = async ({ locale, ...props }: ProductListProps) => {
                       '25vw',
                     ].join(', ')}
                     style={{ objectFit: 'cover' }}
-                    quality={100}
                   />
                 ) : null}
               </AspectRatio>

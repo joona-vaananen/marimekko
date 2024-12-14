@@ -6,10 +6,8 @@ import {
   Section,
   Text,
 } from '@radix-ui/themes';
-import Image from 'next/image';
 
-import secondaryProductImage from '@/assets/jakala-marras-turtleneck-shirt.jpg';
-import primaryProductImage from '@/assets/maija-unikko-blouse.jpg';
+import { Image } from '@/components/image';
 
 export type StaticContentProps = Readonly<
   React.ComponentPropsWithoutRef<typeof Section>
@@ -52,13 +50,14 @@ export const StaticContent = (props: StaticContentProps) => {
         >
           <AspectRatio ratio={2 / 3}>
             <Image
-              src={primaryProductImage}
+              src={
+                'https://storage.googleapis.com/marimekko-uploads/maija-unikko-blouse.jpg'
+              }
               alt="Maija Unikko Blouse"
               fill
               sizes="50vw"
               style={{ objectFit: 'cover' }}
               priority
-              quality="100"
             />
           </AspectRatio>
         </Box>
@@ -87,13 +86,14 @@ export const StaticContent = (props: StaticContentProps) => {
         >
           <AspectRatio ratio={2 / 3}>
             <Image
-              src={secondaryProductImage}
+              src={
+                'https://storage.googleapis.com/marimekko-uploads/jakala-marras-turtleneck-shirt.jpg'
+              }
               alt="Jäkälä Marras Turtleneck Shirt"
               fill
               sizes="50vw"
               style={{ objectFit: 'cover' }}
               priority
-              quality="100"
             />
           </AspectRatio>
         </Box>

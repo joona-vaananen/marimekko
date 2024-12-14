@@ -1,22 +1,25 @@
 import { withPayload } from '@payloadcms/next/withPayload';
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import { BREAKPOINTS } from '@/constants';
+
+const nextConfig: NextConfig = {
   images: {
-    remotePatterns:
-      process.env.NODE_ENV === 'production'
-        ? [
-            // Allow external images from GCS bucket in production
-            {
-              protocol: 'https',
-              hostname: 'storage.googleapis.com',
-              pathname: `/${process.env.APP_GOOGLE_CLOUD_STORAGE_BUCKET}/**`,
-            },
-          ]
-        : [],
+    deviceSizes: Object.values(BREAKPOINTS).filter(
+      (breakpoint) => breakpoint > 0
+    ),
+    imageSizes: [],
+    remotePatterns: [
+      // Allow external images from GCS bucket
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+        pathname: `/${process.env.APP_GOOGLE_CLOUD_STORAGE_BUCKET}/**`,
+      },
+    ],
   },
   output: 'standalone',
-  redirects: () => [
+  redirects: async () => [
     // Redirect to default locale
     {
       source: '/',
@@ -25,8 +28,8 @@ const nextConfig = {
     },
   ],
   webpack(config) {
-    // Use SVGR to SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) =>
+    // Use SVGR for SVG imports
+    const fileLoaderRule = config.module.rules.find((rule: any) =>
       rule.test?.test?.('.svg')
     );
 
