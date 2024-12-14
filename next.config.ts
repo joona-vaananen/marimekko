@@ -1,7 +1,7 @@
 import { withPayload } from '@payloadcms/next/withPayload';
 import type { NextConfig } from 'next';
 
-import { BREAKPOINTS } from '@/constants';
+import { BREAKPOINTS, DEFAULT_LOCALE } from '@/constants';
 
 const nextConfig: NextConfig = {
   images: {
@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
     // Redirect to default locale
     {
       source: '/',
-      destination: '/en',
+      destination: `/${DEFAULT_LOCALE}`,
       permanent: true,
     },
   ],
