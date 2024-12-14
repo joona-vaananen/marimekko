@@ -6,6 +6,8 @@ This project is a modern monolithic web application built to showcase Marimekko'
 
 You can view the live deployment of the application here: [Live Deployment](https://marimekko-204215439482.europe-north1.run.app)
 
+To manage product data, the admin panel (CMS) for the live deployment can be accessed at: [Admin Panel](https://marimekko-204215439482.europe-north1.run.app/admin)
+
 ## Technologies Used
 
 - **Frontend**: Next.js (React-based framework)
@@ -31,8 +33,8 @@ You can use [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm) to manag
 1.  **Install Node.js v22.12.0**: If you’re using `nvm`, you can install the specific Node.js version by running:
 
     ```console
-    nvm install 22.12.0
-    nvm use 22.12.0
+    nvm install
+    nvm use
     ```
 
 2.  **Install Docker**:
@@ -69,7 +71,8 @@ This app uses **Docker** for both development and production environments. There
     npm run up:dev
     ```
 
-    This will start the application in development mode, as well as a local PostgreSQL database. The app will be available at http://localhost:3000.
+    - This will start the application in development mode, as well as a local PostgreSQL database. The app will be available at http://localhost:3000.
+    - To manage the product data, you can access the Payload CMS admin panel at http://localhost:3000/admin.
 
 ### Continuous Integration & Deployment (CI/CD)
 
