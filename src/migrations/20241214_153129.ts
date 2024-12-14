@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres';
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -37,10 +37,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "media_sizes_sm_sizes_sm_filename_idx" ON "media" USING btree ("sizes_sm_filename");
   CREATE INDEX IF NOT EXISTS "media_sizes_md_sizes_md_filename_idx" ON "media" USING btree ("sizes_md_filename");
   CREATE INDEX IF NOT EXISTS "media_sizes_lg_sizes_lg_filename_idx" ON "media" USING btree ("sizes_lg_filename");
-  CREATE INDEX IF NOT EXISTS "media_sizes_xl_sizes_xl_filename_idx" ON "media" USING btree ("sizes_xl_filename");`)
+  CREATE INDEX IF NOT EXISTS "media_sizes_xl_sizes_xl_filename_idx" ON "media" USING btree ("sizes_xl_filename");`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP INDEX IF EXISTS "media_sizes_xs_sizes_xs_filename_idx";
   DROP INDEX IF EXISTS "media_sizes_sm_sizes_sm_filename_idx";
@@ -77,5 +81,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   ALTER TABLE "media" DROP COLUMN IF EXISTS "sizes_xl_height";
   ALTER TABLE "media" DROP COLUMN IF EXISTS "sizes_xl_mime_type";
   ALTER TABLE "media" DROP COLUMN IF EXISTS "sizes_xl_filesize";
-  ALTER TABLE "media" DROP COLUMN IF EXISTS "sizes_xl_filename";`)
+  ALTER TABLE "media" DROP COLUMN IF EXISTS "sizes_xl_filename";`);
 }

@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres';
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -11,10 +11,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "products" DROP COLUMN IF EXISTS "width";
   ALTER TABLE "products" DROP COLUMN IF EXISTS "height";
   ALTER TABLE "products" DROP COLUMN IF EXISTS "focal_x";
-  ALTER TABLE "products" DROP COLUMN IF EXISTS "focal_y";`)
+  ALTER TABLE "products" DROP COLUMN IF EXISTS "focal_y";`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "products" ADD COLUMN "url" varchar;
   ALTER TABLE "products" ADD COLUMN "thumbnail_u_r_l" varchar;
@@ -25,5 +29,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   ALTER TABLE "products" ADD COLUMN "height" numeric;
   ALTER TABLE "products" ADD COLUMN "focal_x" numeric;
   ALTER TABLE "products" ADD COLUMN "focal_y" numeric;
-  CREATE UNIQUE INDEX IF NOT EXISTS "products_filename_idx" ON "products" USING btree ("filename");`)
+  CREATE UNIQUE INDEX IF NOT EXISTS "products_filename_idx" ON "products" USING btree ("filename");`);
 }
