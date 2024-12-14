@@ -51,7 +51,7 @@ export const StaticContent = (props: StaticContentProps) => {
           <AspectRatio ratio={2 / 3}>
             <Image
               src={
-                'https://storage.googleapis.com/marimekko-uploads/maija-unikko-blouse.jpg'
+                'https://storage.googleapis.com/marimekko-uploads/maija-unikko-blouse.webp'
               }
               alt="Maija Unikko Blouse"
               fill
@@ -87,7 +87,7 @@ export const StaticContent = (props: StaticContentProps) => {
           <AspectRatio ratio={2 / 3}>
             <Image
               src={
-                'https://storage.googleapis.com/marimekko-uploads/jakala-marras-turtleneck-shirt.jpg'
+                'https://storage.googleapis.com/marimekko-uploads/jakala-marras-turtleneck-shirt.webp'
               }
               alt="Jäkälä Marras Turtleneck Shirt"
               fill
