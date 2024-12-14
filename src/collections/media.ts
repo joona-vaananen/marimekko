@@ -1,6 +1,13 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig, ImageUploadFormatOptions } from 'payload';
 
 import { BREAKPOINTS } from '@/constants';
+
+const formatOptions: ImageUploadFormatOptions = {
+  format: 'webp',
+  options: {
+    quality: 90,
+  },
+};
 
 export const generateImageName = ({
   extension,
@@ -28,40 +35,40 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    formatOptions: {
-      format: 'webp',
-      options: {
-        quality: 90,
-      },
-    },
+    formatOptions,
     imageSizes: [
       {
         name: 'xs',
         width: BREAKPOINTS.XS,
+        formatOptions,
         generateImageName,
         withoutEnlargement: false,
       },
       {
         name: 'sm',
         width: BREAKPOINTS.SM,
+        formatOptions,
         generateImageName,
         withoutEnlargement: false,
       },
       {
         name: 'md',
         width: BREAKPOINTS.MD,
+        formatOptions,
         generateImageName,
         withoutEnlargement: false,
       },
       {
         name: 'lg',
         width: BREAKPOINTS.LG,
+        formatOptions,
         generateImageName,
         withoutEnlargement: false,
       },
       {
         name: 'xl',
         width: BREAKPOINTS.XL,
+        formatOptions,
         generateImageName,
         withoutEnlargement: false,
       },
