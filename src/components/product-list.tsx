@@ -12,15 +12,21 @@ import Image from 'next/image';
 import { BREAKPOINTS } from '@/constants';
 import { getCachedProducts } from '@/lib/products';
 
-export const ProductList = async () => {
-  const products = await getCachedProducts();
+export type ProductListProps = Readonly<
+  React.ComponentPropsWithoutRef<typeof Section> & {
+    locale: string;
+  }
+>;
+
+export const ProductList = async ({ locale, ...props }: ProductListProps) => {
+  const products = await getCachedProducts({ locale });
 
   if (products.docs.length === 0) {
     return null;
   }
 
   return (
-    <Section>
+    <Section {...props}>
       <Heading as="h2" weight="medium" mb="4">
         Products
       </Heading>

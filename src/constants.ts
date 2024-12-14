@@ -7,4 +7,4 @@ export const BREAKPOINTS = {
   XL: 1640,
 };
 
-export const LOCALE = 'en';
+export const LOCALES = ['en'];

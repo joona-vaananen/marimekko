@@ -1,9 +1,10 @@
 import { Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import { Raleway, Roboto_Slab } from 'next/font/google';
+import { notFound } from 'next/navigation';
 
 import { Header } from '@/components/header';
-import { LOCALE } from '@/constants';
+import { LOCALES } from '@/constants';
 import './theme-config.css';
 
 const robotoSlab = Roboto_Slab({
@@ -25,12 +26,21 @@ export const metadata = {
 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;
+  params: Promise<{
+    locale: string;
+  }>;
 }>;
 
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = async ({ children, params }: RootLayoutProps) => {
+  const { locale } = await params;
+
+  if (!LOCALES.includes(locale)) {
+    notFound();
+  }
+
   return (
     <html
-      lang={LOCALE}
+      lang={locale}
       className={`${robotoSlab.variable} ${raleway.variable}`}
     >
       <body>

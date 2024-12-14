@@ -11,9 +11,13 @@ import Image from 'next/image';
 import secondaryProductImage from '@/assets/jakala-marras-turtleneck-shirt.jpg';
 import primaryProductImage from '@/assets/maija-unikko-blouse.jpg';
 
-export const StaticContent = () => {
+export type StaticContentProps = Readonly<
+  React.ComponentPropsWithoutRef<typeof Section>
+>;
+
+export const StaticContent = (props: StaticContentProps) => {
   return (
-    <Section>
+    <Section {...props}>
       <Grid
         position="relative"
         columns="2"

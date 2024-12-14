@@ -1,10 +1,9 @@
 import { unstable_cache as cache } from 'next/cache';
 import { getPayload } from 'payload';
 
-import { LOCALE } from '@/constants';
 import config from '@payload-config';
 
-export const getProducts = async () => {
+export const getProducts = async ({ locale }: { locale: string }) => {
   const payload = await getPayload({ config });
 
   const products = await payload.find({
@@ -18,7 +17,7 @@ export const getProducts = async () => {
       id: product.id,
       name: product.name,
       price: {
-        formatted: (product.price / 100).toLocaleString(LOCALE, {
+        formatted: (product.price / 100).toLocaleString(locale, {
           style: 'currency',
           currency: 'EUR',
         }),
@@ -38,6 +37,10 @@ export const getProducts = async () => {
   };
 };
 
-export const getCachedProducts = cache(() => getProducts(), ['products'], {
-  tags: ['products'],
-});
+export const getCachedProducts = cache(
+  ({ locale }: { locale: string }) => getProducts({ locale }),
+  ['products'],
+  {
+    tags: ['products'],
+  }
+);
