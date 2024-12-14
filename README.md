@@ -4,6 +4,17 @@
 
 This project is a modern monolithic web application built to showcase Marimekko's latest collection. It consists of both the frontend and backend, all within a single Next.js app that uses Payload as a CMS for managing product data. The application is Dockerized for easy local development, with CI/CD deployed via Google Cloud Build to Cloud Run.
 
+You can view the live deployment of the application here: [Live Deployment](https://marimekko-204215439482.europe-north1.run.app)
+
+## Technologies Used
+
+- **Frontend**: Next.js (React-based framework)
+- **Backend/CMS**: Payload CMS (for managing product data)
+- **Database**: PostgreSQL (hosted on Google Cloud SQL)
+- **Deployment**: Google Cloud (Cloud Run, Cloud SQL, Cloud Build, Cloud Storage, Secret Manager)
+- **Containerization**: Docker (Docker Compose for local development)
+- **CI/CD**: Google Cloud Build (automated build and deployment pipeline)
+
 ## Setup Instructions
 
 ### Prerequisites
