@@ -21,7 +21,7 @@ export const experimental_ppr = true;
 
 export const metadata = {
   title: 'Marimekko',
-  description: 'Marimekko app',
+  description: 'Marimekko E-commerce Web Application',
 };
 
 type RootLayoutProps = Readonly<{
