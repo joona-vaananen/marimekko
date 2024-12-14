@@ -21,6 +21,7 @@ export type ProductListProps = Readonly<
 export const ProductList = async ({ locale, ...props }: ProductListProps) => {
   const products = await getCachedProducts({ locale });
 
+  // If no products were found, render nothing
   if (products.docs.length === 0) {
     return null;
   }
@@ -50,8 +51,8 @@ export const ProductList = async ({ locale, ...props }: ProductListProps) => {
               >
                 {typeof product.images?.[0] === 'object' ? (
                   <Image
-                    src={product.images[0].url!}
-                    alt={product.images[0].alt!}
+                    src={product.images[0].url}
+                    alt={product.images[0].alt}
                     fill
                     sizes={[
                       `(max-width: ${BREAKPOINTS.SM - 1}) 50vw`,

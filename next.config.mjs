@@ -2,13 +2,11 @@ import { withPayload } from '@payloadcms/next/withPayload';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    ppr: 'incremental',
-  },
   images: {
     remotePatterns:
       process.env.NODE_ENV === 'production'
         ? [
+            // Allow external images from GCS bucket in production
             {
               protocol: 'https',
               hostname: 'storage.googleapis.com',
@@ -19,6 +17,7 @@ const nextConfig = {
   },
   output: 'standalone',
   redirects: () => [
+    // Redirect to default locale
     {
       source: '/',
       destination: '/en',
@@ -26,6 +25,7 @@ const nextConfig = {
     },
   ],
   webpack(config) {
+    // Use SVGR to SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.('.svg')
     );

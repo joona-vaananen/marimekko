@@ -21,6 +21,9 @@ export const Products: CollectionConfig = {
       name: 'price',
       type: 'number',
       required: true,
+      admin: {
+        description: 'Price in cents',
+      },
     },
     {
       name: 'images',
@@ -32,6 +35,7 @@ export const Products: CollectionConfig = {
   hooks: {
     afterChange: [
       () => {
+        // Revalidate cache for product data when the content is changed
         revalidateTag('products');
       },
     ],

@@ -7,17 +7,17 @@ import { Header } from '@/components/header';
 import { LOCALES } from '@/constants';
 import './theme-config.css';
 
+// Default font
 const robotoSlab = Roboto_Slab({
   subsets: ['latin'],
   variable: '--font-roboto-slab',
 });
 
+// Heading font
 const raleway = Raleway({
   subsets: ['latin'],
   variable: '--font-raleway',
 });
-
-export const experimental_ppr = true;
 
 export const metadata = {
   title: 'Marimekko',
@@ -34,6 +34,7 @@ type RootLayoutProps = Readonly<{
 const RootLayout = async ({ children, params }: RootLayoutProps) => {
   const { locale } = await params;
 
+  // Render not found UI, if the locale in route parameters does not match any of the supported locales
   if (!LOCALES.includes(locale)) {
     notFound();
   }

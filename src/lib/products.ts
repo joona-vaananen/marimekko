@@ -6,6 +6,7 @@ import config from '@payload-config';
 export const getProducts = async ({ locale }: { locale: string }) => {
   const payload = await getPayload({ config });
 
+  // Get product data from Payload
   const products = await payload.find({
     collection: 'products',
   });
@@ -28,15 +29,14 @@ export const getProducts = async ({ locale }: { locale: string }) => {
           ?.filter((image) => typeof image === 'object')
           .map((image) => ({
             id: image.id,
-            url: image.url,
-            alt: image.alt,
-            width: image.width,
-            height: image.height,
+            url: image.url!,
+            alt: image.alt ?? '',
           })) ?? [],
     })),
   };
 };
 
+// Get product data and cache it indefinitely
 export const getCachedProducts = cache(
   ({ locale }: { locale: string }) => getProducts({ locale }),
   ['products'],

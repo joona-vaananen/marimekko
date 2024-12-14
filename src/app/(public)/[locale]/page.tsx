@@ -17,6 +17,7 @@ const HomePage = async ({ params }: HomePageProps) => {
     <Container asChild>
       <main>
         <StaticContent />
+        {/* Wrap product list component in a suspense boundary to stream it after initial page load */}
         <Suspense fallback={null}>
           <ProductList locale={locale} />
         </Suspense>
