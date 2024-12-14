@@ -7,9 +7,10 @@ import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
-import { Media } from './collections/media';
-import { Products } from './collections/products';
-import { Users } from './collections/users';
+import { Media } from '@/collections/media';
+import { Products } from '@/collections/products';
+import { Users } from '@/collections/users';
+import { migrations } from '@/migrations';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -31,6 +32,7 @@ export default buildConfig({
     pool: {
       connectionString: `postgres://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
     },
+    prodMigrations: migrations,
   }),
   sharp,
   plugins:
