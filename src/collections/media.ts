@@ -28,6 +28,12 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
+    formatOptions: {
+      format: 'webp',
+      options: {
+        quality: 90,
+      },
+    },
     imageSizes: [
       {
         name: 'xs',
